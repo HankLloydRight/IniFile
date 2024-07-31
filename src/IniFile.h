@@ -7,7 +7,7 @@
 #include "SdFat.h"
 extern SdFat SD;
 #else
-#include "SD.h"
+#include "SD_MMC.h"
 #endif
 #include "IPAddress.h"
 
@@ -155,7 +155,7 @@ bool IniFile::open(void)
 {
 	if (_file)
 		_file.close();
-	_file = SD.open(_filename, _mode);
+	_file = SD_MMC.open(_filename, _mode);
 	if (isOpen()) {
 		_error = errorNoError;
 		return true;
